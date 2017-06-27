@@ -1,0 +1,15 @@
+[submodule "elsie-dee"]
+	path = elsie-dee
+	url = git@github.com:ekholabs/elsie-dee.git
+[submodule "eureka-service"]
+	path = eureka-service
+	url = git@github.com:ekholabs/eureka-service.git
+[submodule "configuration-service"]
+	path = configuration-service
+	url = git@github.com:ekholabs/configuration-service.git
+[submodule "elsie-deetect"]
+	path = elsie-deetect
+	url = git@github.com:ekholabs/elsie-deetect.git
+[submodule "elsie-dee-configs"]
+	path = elsie-dee-configs
+	url = git@github.com:ekholabs/elsie-dee-configs.git

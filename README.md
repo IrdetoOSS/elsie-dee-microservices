@@ -34,9 +34,9 @@ problems with two containers not registering to Eureka. The workaround for now i
 * After running Docker Compose do:
   * Run ```docker ps```;
   * Copy the ID of the elsie-dee container;
-  * Run ```docker restart [container_id]
+  * Run ```docker restart [container_id]```
   * Copy the ID of the elsie-deetect container;
-  * Run ```docker restart [container_id]
+  * Run ```docker restart [container_id]```
 
 If you now go to ```http://localhost:8083``` you will see the Eureka dashboard and all
 applications registered to it.

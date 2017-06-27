@@ -1,0 +1,27 @@
+version: '1'
+services:
+  eureka-service:
+    image: "ekholabs/eureka-service"
+    ports:
+      - "8083:8083"
+  configuration-service:
+    image: "ekholabs/configuration-service"
+    ports:
+      - "8082:8082"
+    links:
+      - eureka-service
+  elsie-deetect:
+    image: "ekholabs/elsie-deetect"
+    ports:
+      - "8080:8080"
+    links:
+      - configuration-service
+      - eureka-service
+  elsie-dee:
+    image: "ekholabs/elsie-dee"
+    ports:
+      - "80:80"
+    links:
+      - configuration-service
+      - eureka-service
+      - elsie-deetect

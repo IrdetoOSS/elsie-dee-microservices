@@ -1,27 +1,40 @@
-version: '1'
+version: '3'
 services:
-  eureka-service:
-    image: "ekholabs/eureka-service"
-    ports:
-      - "8083:8083"
-  configuration-service:
-    image: "ekholabs/configuration-service"
-    ports:
-      - "8082:8082"
-    links:
-      - eureka-service
-  elsie-deetect:
-    image: "ekholabs/elsie-deetect"
-    ports:
-      - "8080:8080"
-    links:
-      - configuration-service
-      - eureka-service
   elsie-dee:
     image: "ekholabs/elsie-dee"
+    container_name: "elsie-dee"
     ports:
       - "80:80"
     links:
       - configuration-service
       - eureka-service
       - elsie-deetect
+    depends_on:
+      - configuration-service
+      - eureka-service
+      - elsie-deetect
+  elsie-deetect:
+    image: "ekholabs/elsie-deetect"
+    container_name: "elsie-deetect"
+    ports:
+      - "8080:8080"
+    links:
+      - configuration-service
+      - eureka-service
+    depends_on:
+      - configuration-service
+      - eureka-service
+  configuration-service:
+    image: "ekholabs/configuration-service"
+    container_name: "configuration-service"
+    ports:
+      - "8082:8082"
+    links:
+      - eureka-service
+    depends_on:
+      - eureka-service
+  eureka-service:
+    image: "ekholabs/eureka-service"
+    container_name: "eureka-service"
+    ports:
+      - "8083:8083"

@@ -4,6 +4,9 @@ This repository contains a collection of all microservices used by Elsie-Dee.
 From here one can with one command line clone all the repositories and / or
 run ```docker-compose``` to start them in one go.
 
+For more details about the other micoservices, please check the submodules for specific
+information.
+
 # Getting the Source
 
 * ```git clone git@github.com:ekholabs/elsie-dee-microservices.git --recurse-submodules```

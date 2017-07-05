@@ -13,3 +13,6 @@
 [submodule "elsie-dee-configs"]
 	path = elsie-dee-configs
 	url = git@github.com:ekholabs/elsie-dee-configs.git
+[submodule "face_classification"]
+	path = face_classification
+	url = git@github.com:ekholabs/face_classification.git

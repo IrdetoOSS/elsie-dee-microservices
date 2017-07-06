@@ -16,3 +16,6 @@
 [submodule "face_classification"]
 	path = face_classification
 	url = git@github.com:ekholabs/face_classification.git
+[submodule "elsie-deesight"]
+	path = elsie-deesight
+	url = git@github.com:ekholabs/elsie-deesight.git

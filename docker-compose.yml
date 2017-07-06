@@ -9,10 +9,12 @@ services:
       - configuration-service
       - eureka-service
       - elsie-deetect
+      - elsie-deesight
     depends_on:
       - configuration-service
       - eureka-service
       - elsie-deetect
+      - elsie-deesight
   elsie-deetect:
     image: "ekholabs/elsie-deetect"
     container_name: "elsie-deetect"
@@ -24,6 +26,19 @@ services:
     depends_on:
       - configuration-service
       - eureka-service
+  elsie-deesight:
+    image: "ekholabs/elsie-deesight"
+    container_name: "elsie-deesight"
+    ports:
+      - "8085:8085"
+    links:
+      - configuration-service
+      - eureka-service
+      - face-classifier
+    depends_on:
+      - configuration-service
+      - eureka-service
+      - face-classifier
   configuration-service:
     image: "ekholabs/configuration-service"
     container_name: "configuration-service"
@@ -38,3 +53,8 @@ services:
     container_name: "eureka-service"
     ports:
       - "8083:8083"
+  face-classifier:
+    image: "ekholabs/face-classifier"
+    container_name: "face-classifier"
+    ports:
+      - "8084:8084"

@@ -19,3 +19,6 @@
 [submodule "elsie-deesight"]
 	path = elsie-deesight
 	url = git@github.com:ekholabs/elsie-deesight.git
+[submodule "elsie-dee-audiorip"]
+	path = elsie-dee-audiorip
+	url = git@github.com:ekholabs/elsie-dee-audiorip.git

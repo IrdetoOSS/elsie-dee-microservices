@@ -10,11 +10,13 @@ services:
       - eureka-service
       - elsie-deetect
       - elsie-deesight
+      - elsie-dee-audiorip
     depends_on:
       - configuration-service
       - eureka-service
       - elsie-deetect
       - elsie-deesight
+      - elsie-dee-audiorip
   elsie-deetect:
     image: "ekholabs/elsie-deetect"
     container_name: "elsie-deetect"

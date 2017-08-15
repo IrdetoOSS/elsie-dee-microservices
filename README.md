@@ -67,5 +67,7 @@ Running the containers on the command line will require the following sequence (
    * ```docker run -d -p 8085:8085 --link face-classifier --link configuration-service --link eureka-service --name=elsie-deesight ekholabs/elsie-deesight```
 5. Elsie-Deetect
    * ```docker run -d -p 8080:8080 --link configuration-service --link eureka-service --name=elsie-deetect ekholabs/elsie-deetect```
-6. Elsie-Dee
-   * ```docker run -d -p 8085:8085 --link elsie-deetect --link configuration-service --link eureka-service --name=elsie-dee ekholabs/elsie-dee```
+6. Elsie-Dee Audio Rip
+   * ```docker run -d -p 8086:8086 --link configuration-service --link eureka-service --name=elsie-dee-audiorip ekholabs/elsie-dee-audiorip```
+7. Elsie-Dee
+   * ```docker run -d -p 80:80 --link configuration-service --link eureka-service --link elsie-deetect --link elsie-deesight --link elsie-dee-audiorip ekholabs/elsie-dee```

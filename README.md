@@ -34,11 +34,13 @@ After cloning the repository run the following:
 **Remark:** there is an issue with the way we are using Spring Retry. It is causing
 problems with containers not registering to Eureka due to dependency order. The workaround for now is:
 
-* After running Docker Compose do:
+* After running Docker Compose, do the following:
   * Run ```docker ps```;
   * Copy the ID of the elsie-deetect container;
   * Run ```docker restart [container_id]```
   * Copy the ID of the elsie-deesight container;
+  * Run ```docker restart [container_id]```
+  * Copy the ID of the elsie-deeaudiorip container;
   * Run ```docker restart [container_id]```
   * Copy the ID of the elsie-dee container;
   * Run ```docker restart [container_id]```

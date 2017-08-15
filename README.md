@@ -31,6 +31,8 @@ After cloning the repository run the following:
 
 * ```docker-compose up -d --remove-orphans```
 
+Make sure to allocate 4Gb of memory to Docker via preferences. 
+
 **Remark:** there is an issue with the way we are using Spring Retry. It is causing
 problems with containers not registering to Eureka due to dependency order. The workaround for now is:
 

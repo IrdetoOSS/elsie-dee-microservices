@@ -86,7 +86,7 @@ services:
     container_name: "face-classifier"
     ports:
       - "8084:8084"
-  elasticsearch:
+  elsie-dee-elastic:
     image: elasticsearch:2.4
     container_name: elsie-dee-elastic
     environment:
@@ -99,7 +99,5 @@ services:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200

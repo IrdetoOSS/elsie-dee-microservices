@@ -38,11 +38,11 @@ services:
     links:
       - configuration-service
       - eureka-service
-      - elasticsearch
+      - elsie-dee-elastic
     depends_on:
       - configuration-service
       - eureka-service
-      - elasticsearch
+      - elsie-dee-elastic
   elsie-dee-audiorip:
     image: "ekholabs/elsie-dee-audiorip"
     container_name: "elsie-dee-audiorip"
@@ -86,3 +86,20 @@ services:
     container_name: "face-classifier"
     ports:
       - "8084:8084"
+  elasticsearch:
+    image: elasticsearch:2.4
+    container_name: elsie-dee-elastic
+    environment:
+      - cluster.name=elastic-cluster
+      - http.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200

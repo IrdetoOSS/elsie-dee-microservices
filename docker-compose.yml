@@ -11,12 +11,14 @@ services:
       - elsie-deetect
       - elsie-deesight
       - elsie-dee-audiorip
+      - elsie-dee-search
     depends_on:
       - configuration-service
       - eureka-service
       - elsie-deetect
       - elsie-deesight
       - elsie-dee-audiorip
+      - elsie-dee-search
   elsie-deetect:
     image: "ekholabs/elsie-deetect"
     container_name: "elsie-deetect"
@@ -28,6 +30,19 @@ services:
     depends_on:
       - configuration-service
       - eureka-service
+  elsie-dee-search:
+    image: "ekholabs/elsie-dee-search"
+    container_name: "elsie-dee-search"
+    ports:
+      - "8087:8087"
+    links:
+      - configuration-service
+      - eureka-service
+      - elasticsearch
+    depends_on:
+      - configuration-service
+      - eureka-service
+      - elasticsearch
   elsie-dee-audiorip:
     image: "ekholabs/elsie-dee-audiorip"
     container_name: "elsie-dee-audiorip"

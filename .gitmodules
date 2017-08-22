@@ -22,3 +22,6 @@
 [submodule "elsie-dee-audiorip"]
 	path = elsie-dee-audiorip
 	url = git@github.com:ekholabs/elsie-dee-audiorip.git
+[submodule "elsie-dee-search"]
+	path = elsie-dee-search
+	url = git@github.com:ekholabs/elsie-dee-search.git

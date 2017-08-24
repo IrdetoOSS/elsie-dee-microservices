@@ -31,7 +31,7 @@ After cloning the repository run the following:
 
 * ```docker-compose up -d --remove-orphans```
 
-Make sure to allocate 4Gb of memory to Docker via preferences. 
+Make sure to allocate 4Gb of memory to Docker via preferences.
 
 **Remark:** there is an issue with the way we are using Spring Retry. It is causing
 problems with containers not registering to Eureka due to dependency order. The workaround for now is:
@@ -43,6 +43,8 @@ problems with containers not registering to Eureka due to dependency order. The 
   * Copy the ID of the elsie-deesight container;
   * Run ```docker restart [container_id]```
   * Copy the ID of the elsie-deeaudiorip container;
+  * Run ```docker restart [container_id]```
+  * Copy the ID of the elsie-deesearch container;
   * Run ```docker restart [container_id]```
   * Copy the ID of the elsie-dee container;
   * Run ```docker restart [container_id]```
@@ -73,5 +75,9 @@ Running the containers on the command line will require the following sequence (
    * ```docker run -d -p 8080:8080 --link configuration-service --link eureka-service --name=elsie-deetect ekholabs/elsie-deetect```
 6. Elsie-Dee Audio Rip
    * ```docker run -d -p 8086:8086 --link configuration-service --link eureka-service --name=elsie-dee-audiorip ekholabs/elsie-dee-audiorip```
-7. Elsie-Dee
+7. Elsie-Dee Search
+  * ```docker run -p 8087:8087 --link eureka-service --link configuration-service --link elsie-dee-elastic --name=elsie-dee-search ekholabs/elsie-dee-search```
+  * Elsie-Dee Search depends on elsie-dee-elastic container. This container uses an elasticsearch:2.4 image, which is part of the Docker Compose file. In order to run the elsie-dee-elastic container manually, execute the following command:
+    - ```docker run -p 9200:9200 -p 9300:9300 -e "http.host=0.0.0.0" -e "transport.host=0.0.0.0" -e discovery.zen.minimum_master_nodes=1 --name=elsie-dee-elastic elasticsearch:2.4```
+8. Elsie-Dee
    * ```docker run -d -p 80:80 --link configuration-service --link eureka-service --link elsie-deetect --link elsie-deesight --link elsie-dee-audiorip ekholabs/elsie-dee```

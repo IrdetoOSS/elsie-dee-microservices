@@ -26,37 +26,18 @@ Need help? Google is your friend.
 
 # Docker Compose
 
-Using ```docker-compose``` we can start the containers based on the latest changes on the source code.
-After cloning the repository run the following:
+As part of the project you will also find 2 Docker Compose files: one used to start the base services (i.e. Eureka and the Configuration Server); and a second one which starts all other services.
 
-* ```docker-compose up -d --remove-orphans```
+In order to make life easier, I also provide a ```run.sh``` script, which will execute both file and get everything in place for you.
 
-Make sure to allocate 4Gb of memory to Docker via preferences.
+You don't need to clone the project, just download the two compose files and the script. The images will be pulled from hub.docker.
 
-**Remark:** there is an issue with the way we are using Spring Retry. It is causing
-problems with containers not registering to Eureka due to dependency order. The workaround for now is:
-
-* After running Docker Compose, do the following:
-  * Run ```docker ps```;
-  * Copy the ID of the elsie-deetect container;
-  * Run ```docker restart [container_id]```
-  * Copy the ID of the elsie-deesight container;
-  * Run ```docker restart [container_id]```
-  * Copy the ID of the elsie-deeaudiorip container;
-  * Run ```docker restart [container_id]```
-  * Copy the ID of the elsie-deesearch container;
-  * Run ```docker restart [container_id]```
-  * Copy the ID of the elsie-dee container;
-  * Run ```docker restart [container_id]```
-
-The Elsie-Dee container depends on the previous two, that's why we restart it as the last one.
-
-If you now go to ```http://localhost:8083``` you will see the Eureka dashboard and all
+After running the script, go to ```http://localhost:8083```, you will see the Eureka dashboard and all
 applications registered to it.
 
 # Using Docker images
 
-Once can also start the container using the images available on ```hub.docker.com```. However, a container orchestrations
+one can also start the container using the images available on ```hub.docker.com```. However, a container orchestrations
 tool would help to manager all six containers.
 
 The images can be found on: (ekholabs)[https://hub.docker.com/ekholabs]

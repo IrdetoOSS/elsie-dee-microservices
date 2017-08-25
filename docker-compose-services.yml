@@ -5,87 +5,76 @@ services:
     container_name: "elsie-dee"
     ports:
       - "80:80"
-    links:
+    external_links:
       - configuration-service
       - eureka-service
+    links:
       - elsie-deetect
       - elsie-deesight
       - elsie-dee-audiorip
       - elsie-dee-search
     depends_on:
-      - configuration-service
-      - eureka-service
       - elsie-deetect
       - elsie-deesight
       - elsie-dee-audiorip
       - elsie-dee-search
+    networks:
+      - elsie-dee-net
   elsie-deetect:
     image: "ekholabs/elsie-deetect"
     container_name: "elsie-deetect"
     ports:
       - "8080:8080"
-    links:
+    external_links:
       - configuration-service
       - eureka-service
-    depends_on:
-      - configuration-service
-      - eureka-service
+    networks:
+      - elsie-dee-net
   elsie-dee-search:
     image: "ekholabs/elsie-dee-search"
     container_name: "elsie-dee-search"
     ports:
       - "8087:8087"
-    links:
+    external_links:
       - configuration-service
       - eureka-service
+    links:
       - elsie-dee-elastic
     depends_on:
-      - configuration-service
-      - eureka-service
       - elsie-dee-elastic
+    networks:
+      - elsie-dee-net
   elsie-dee-audiorip:
     image: "ekholabs/elsie-dee-audiorip"
     container_name: "elsie-dee-audiorip"
     ports:
       - "8086:8086"
-    links:
+    external_links:
       - configuration-service
       - eureka-service
-    depends_on:
-      - configuration-service
-      - eureka-service
+    networks:
+      - elsie-dee-net
   elsie-deesight:
     image: "ekholabs/elsie-deesight"
     container_name: "elsie-deesight"
     ports:
       - "8085:8085"
-    links:
+    external_links:
       - configuration-service
       - eureka-service
-      - face-classifier
-    depends_on:
-      - configuration-service
-      - eureka-service
-      - face-classifier
-  configuration-service:
-    image: "ekholabs/configuration-service"
-    container_name: "configuration-service"
-    ports:
-      - "8082:8082"
     links:
-      - eureka-service
+      - face-classifier
     depends_on:
-      - eureka-service
-  eureka-service:
-    image: "ekholabs/eureka-service"
-    container_name: "eureka-service"
-    ports:
-      - "8083:8083"
+      - face-classifier
+    networks:
+      - elsie-dee-net
   face-classifier:
     image: "ekholabs/face-classifier"
     container_name: "face-classifier"
     ports:
       - "8084:8084"
+    networks:
+      - elsie-dee-net
   elsie-dee-elastic:
     image: elasticsearch:2.4
     container_name: elsie-dee-elastic
@@ -99,5 +88,17 @@ services:
       memlock:
         soft: -1
         hard: -1
+    volumes:
+      - esdata1:/usr/share/elsie-dee-elastic/data
     ports:
       - 9200:9200
+    networks:
+      - elsie-dee-net
+
+volumes:
+  esdata1:
+    driver: local
+
+networks:
+  elsie-dee-net:
+    driver: overlay

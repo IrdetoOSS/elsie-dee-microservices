@@ -13,11 +13,13 @@ services:
       - elsie-deesight
       - elsie-dee-audiorip
       - elsie-dee-search
+      - stream-services
     depends_on:
       - elsie-deetect
       - elsie-deesight
       - elsie-dee-audiorip
       - elsie-dee-search
+      - stream-services
     networks:
       - elsie-dee-net
   elsie-deetect:
@@ -73,6 +75,13 @@ services:
     container_name: "face-classifier"
     ports:
       - "8084:8084"
+    networks:
+      - elsie-dee-net
+  stream-services:
+    image: "ekholabs/stream-services"
+    container_name: "stream-services"
+    ports:
+      - "8088:8088"
     networks:
       - elsie-dee-net
   elsie-dee-elastic:

@@ -25,3 +25,6 @@
 [submodule "elsie-dee-search"]
 	path = elsie-dee-search
 	url = git@github.com:ekholabs/elsie-dee-search.git
+[submodule "stream_services"]
+	path = stream_services
+	url = git@github.com:ekholabs/stream_services.git

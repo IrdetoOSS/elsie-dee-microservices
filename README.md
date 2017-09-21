@@ -32,8 +32,7 @@ In order to make life easier, I also provide a ```run.sh``` script, which will e
 
 You don't need to clone the project, just download the two compose files and the script. The images will be pulled from hub.docker.
 
-After running the script, go to ```http://localhost:8083```, you will see the Eureka dashboard and all
-applications registered to it.
+After running the script, go to ```http://localhost:8083```, you will see the Eureka dashboard. As the other services start, you will be able to see them registered to Eureka.
 
 # Using Docker images
 
@@ -57,8 +56,10 @@ Running the containers on the command line will require the following sequence (
 6. Elsie-Dee Audio Rip
    * ```docker run -d -p 8086:8086 --link configuration-service --link eureka-service --name=elsie-dee-audiorip ekholabs/elsie-dee-audiorip```
 7. Elsie-Dee Search
-  * ```docker run -p 8087:8087 --link eureka-service --link configuration-service --link elsie-dee-elastic --name=elsie-dee-search ekholabs/elsie-dee-search```
-  * Elsie-Dee Search depends on elsie-dee-elastic container. This container uses an elasticsearch:2.4 image, which is part of the Docker Compose file. In order to run the elsie-dee-elastic container manually, execute the following command:
-    - ```docker run -p 9200:9200 -p 9300:9300 -e "http.host=0.0.0.0" -e "transport.host=0.0.0.0" -e discovery.zen.minimum_master_nodes=1 --name=elsie-dee-elastic elasticsearch:2.4```
-8. Elsie-Dee
-   * ```docker run -d -p 80:80 --link configuration-service --link eureka-service --link elsie-deetect --link elsie-deesight --link elsie-dee-audiorip ekholabs/elsie-dee```
+   * ```docker run -p 8087:8087 --link eureka-service --link configuration-service --link elsie-dee-elastic --name=elsie-dee-search ekholabs/elsie-dee-search```
+   * Elsie-Dee Search depends on elsie-dee-elastic container. This container uses an elasticsearch:2.4 image, which is part of the Docker Compose file. In order to run the elsie-dee-elastic container manually, execute the following command:
+     - ```docker run -p 9200:9200 -p 9300:9300 -e "http.host=0.0.0.0" -e "transport.host=0.0.0.0" -e discovery.zen.minimum_master_nodes=1 --name=elsie-dee-elastic elasticsearch:2.4```
+8. Stream Services
+   * ```docker run -d -p 8088:8088 --name=stream-services ekholabs/stream-services```
+9. Elsie-Dee
+   * ```docker run -d -p 80:80 --link configuration-service --link eureka-service --link elsie-deetect --link elsie-deesight --link elsie-dee-audiorip --link stream-services ekholabs/elsie-dee```

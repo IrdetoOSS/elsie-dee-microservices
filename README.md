@@ -39,7 +39,7 @@ After running the script, go to ```http://localhost:8083```, you will see the Eu
 one can also start the container using the images available on ```hub.docker.com```. However, a container orchestrations
 tool would help to manager all six containers.
 
-The images can be found on: (ekholabs)[https://hub.docker.com/ekholabs]
+The images can be found on: [ekholabs](https://hub.docker.com/ekholabs)
 
 Running the containers on the command line will require the following sequence (assuming one has pulled the images):
 

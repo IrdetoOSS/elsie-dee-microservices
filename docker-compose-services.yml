@@ -1,7 +1,7 @@
 version: '3'
 services:
   elsie-dee:
-    image: "ekholabs/elsie-dee"
+    image: "ekholabs/elsie-dee:1.0"
     container_name: "elsie-dee"
     ports:
       - "80:80"
@@ -23,7 +23,7 @@ services:
     networks:
       - elsie-dee-net
   elsie-deetect:
-    image: "ekholabs/elsie-deetect"
+    image: "ekholabs/elsie-deetect:1.0"
     container_name: "elsie-deetect"
     ports:
       - "8080:8080"
@@ -33,7 +33,7 @@ services:
     networks:
       - elsie-dee-net
   elsie-dee-search:
-    image: "ekholabs/elsie-dee-search"
+    image: "ekholabs/elsie-dee-search:1.0"
     container_name: "elsie-dee-search"
     ports:
       - "8087:8087"
@@ -47,7 +47,7 @@ services:
     networks:
       - elsie-dee-net
   elsie-dee-audiorip:
-    image: "ekholabs/elsie-dee-audiorip"
+    image: "ekholabs/elsie-dee-audiorip:1.0"
     container_name: "elsie-dee-audiorip"
     ports:
       - "8086:8086"
@@ -57,7 +57,7 @@ services:
     networks:
       - elsie-dee-net
   elsie-deesight:
-    image: "ekholabs/elsie-deesight"
+    image: "ekholabs/elsie-deesight:1.0"
     container_name: "elsie-deesight"
     ports:
       - "8085:8085"
@@ -71,14 +71,14 @@ services:
     networks:
       - elsie-dee-net
   face-classifier:
-    image: "ekholabs/face-classifier"
+    image: "ekholabs/face-classifier:1.0"
     container_name: "face-classifier"
     ports:
       - "8084:8084"
     networks:
       - elsie-dee-net
   stream-services:
-    image: "ekholabs/stream-services"
+    image: "ekholabs/stream-services:1.0"
     container_name: "stream-services"
     ports:
       - "8088:8088"

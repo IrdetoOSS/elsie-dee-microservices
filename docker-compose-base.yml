@@ -1,7 +1,7 @@
 version: '3'
 services:
   configuration-service:
-    image: "ekholabs/configuration-service"
+    image: "ekholabs/configuration-service:1.0"
     container_name: "configuration-service"
     ports:
       - "8082:8082"
@@ -12,7 +12,7 @@ services:
     networks:
       - elsie-dee-net
   eureka-service:
-    image: "ekholabs/eureka-service"
+    image: "ekholabs/eureka-service:1.0"
     container_name: "eureka-service"
     ports:
       - "8083:8083"
